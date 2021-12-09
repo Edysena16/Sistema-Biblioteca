@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="631.0" prefWidth="920.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
+<AnchorPane prefHeight="631.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CadUserController">
    <children>
       <HBox layoutX="110.0" layoutY="117.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
@@ -38,26 +37,26 @@
                         <Font name="Cambria Bold Italic" size="15.0" />
                      </font>
                   </Label>
-                  <TextField prefWidth="300.0" />
+                  <TextField fx:id="txtNome" prefWidth="300.0" />
                   <Label text="E-Mail">
                      <font>
                         <Font name="Cambria Bold Italic" size="15.0" />
                      </font>
                   </Label>
-                  <TextField prefWidth="300.0" />
+                  <TextField fx:id="txtEmail" prefWidth="300.0" />
                   <Label text="Telefone">
                      <font>
                         <Font name="Cambria Bold Italic" size="15.0" />
                      </font>
                   </Label>
-                  <TextField prefWidth="300.0" />
+                  <TextField fx:id="txtTelefone" prefWidth="300.0" />
                   <Label text="Endereço">
                      <font>
                         <Font name="Cambria Bold Italic" size="15.0" />
                      </font>
                   </Label>
-                  <TextField prefWidth="300.0" />
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-background-radius: 10px; -fx-border-color: black; -fx-border-radius: 10px;" text="Cadastrar novo usuário">
+                  <TextField fx:id="txtEndereco" prefWidth="300.0" />
+                  <Button mnemonicParsing="false" onAction="#add" prefHeight="40.0" prefWidth="150.0" style="-fx-background-radius: 10px; -fx-border-color: black; -fx-border-radius: 10px;" text="Cadastrar Usuário">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
@@ -74,8 +73,8 @@
             </Separator>
             <TableView prefHeight="621.0" prefWidth="527.0">
               <columns>
-                <TableColumn prefWidth="93.0" text="Nome" />
-                <TableColumn prefWidth="98.0" text="Identificação" />
+                <TableColumn prefWidth="93.0" text="ID" />
+                <TableColumn prefWidth="98.0" text="Nome" />
                   <TableColumn prefWidth="101.0" text="E-Mail" />
                   <TableColumn prefWidth="81.0" text="Telefone" />
                   <TableColumn prefWidth="149.0" text="Endereço" />

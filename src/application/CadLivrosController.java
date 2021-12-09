@@ -2,8 +2,6 @@ package application;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -16,10 +14,10 @@ public class CadLivrosController {
 	@FXML TextField txtEditora;//mapear area Editora livro em sceneBuild
 	@FXML TextField txtAutor;//mapear area author livro em sceneBuild
 	
-	private ArrayList<Livros> livros = new ArrayList<Livros>();//listar os livros, para ser acessados na busca
-	
-	@FXML
-	private void BucasLivros() {
+		
+	//private ArrayList<Livros> livros = new ArrayList<Livros>();
+/*	@FXML
+	private void buscaLivros() {
 		livros = new ArrayList<Livros>();
 		String sql = "Selec * from livro order by nome";
 		try {
@@ -45,7 +43,7 @@ public class CadLivrosController {
 			e.printStackTrace();
 		}
 	}
-
+*/
 	
 	
 	@FXML
@@ -54,6 +52,7 @@ public class CadLivrosController {
 	}
 	
 	private void addLivros() {
+		//livros = new ArrayList<Livros>();
 		Livros l = lerTela();//Qual livro que ele vai add>> Livros l = lerTela();
 		String sql = "insert into livro(nome, genero, editora, autor) values (?, ?, ?, ?)";//inserir da tabela sqlite
 		try {
@@ -67,11 +66,13 @@ public class CadLivrosController {
 			
 			
 			con.close();//Fechar conexão
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
+
 	private Livros lerTela() {
 		Livros l = new Livros();
 		l.setNome(txtNome.getText());//Pega o text desse componente e jogar aqui dentro

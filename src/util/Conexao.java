@@ -4,7 +4,6 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-import javafx.fxml.FXML;
 
 public class Conexao {
 	public static Connection conectaSqlite() {

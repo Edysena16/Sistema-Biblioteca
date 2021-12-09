@@ -5,35 +5,41 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import model.Livros;
 import util.Conexao;
 
 public class ConsultaAcervoController {
-	@FXML TextField txtNome;
-	@FXML TextField txtGenero;
-	@FXML TextField txtEditora;
-	@FXML TextField txtAutor;
+	
 	@FXML TableView<Livros> tbl;
 	@FXML TableColumn<Livros, Number> colId;
-	@FXML TableColumn<Livros, Number> colNome;
-	@FXML TableColumn<Livros, Number> colGenero;
-	@FXML TableColumn<Livros, Number> colEditora;
-	@FXML TableColumn<Livros, Number> colAutor;
-	
+	@FXML TableColumn<Livros, String> colNome;
+	@FXML TableColumn<Livros, String> colGenero;
+	@FXML TableColumn<Livros, String> colEditora;
+	@FXML TableColumn<Livros, String> colAutor;
 
-	
+
+
 	private ArrayList<Livros> livros = new ArrayList<Livros>();
-	
-	
+
 	@FXML
-	private void BucasLivros() {
-		
+	public void initialize() {
+		colId.setCellValueFactory(cellData -> cellData.getValue().idProperty());
+		colNome.setCellValueFactory(cellData -> cellData.getValue().nomeProperty());
+		colGenero.setCellValueFactory(cellData -> cellData.getValue().generoProperty());
+		colEditora.setCellValueFactory(cellData -> cellData.getValue().editoraProperty());
+		colAutor.setCellValueFactory(cellData -> cellData.getValue().autorProperty());
+		buscarLivros();
+	}
+	@FXML
+	private void buscarLivros() {
+
 		livros = new ArrayList<Livros>();
-		String sql = "Selec * from livro order by nome";
+	
+		String sql = "Select * from livro order by nome";
 		try {
 			Connection con = Conexao.conectaSqlite();//Conectar Conexão
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -47,15 +53,13 @@ public class ConsultaAcervoController {
 				l.setEditora(rs.getString("editora"));
 				l.setAutor(rs.getString("autor"));
 				livros.add(l);
-				
+
 			}
-				
-			
-			
 			con.close();
+			tbl.setItems(FXCollections.observableArrayList(livros));//Converter ArrayListe em tabela 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	}
+}
