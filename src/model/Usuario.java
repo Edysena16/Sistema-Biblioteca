@@ -6,14 +6,21 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Usuario {
-
+	//Metodos do JavaFX para trabalhar com table
 	private IntegerProperty id = new SimpleIntegerProperty(0);
 	private StringProperty nome = new SimpleStringProperty("");
 	private StringProperty telefone = new SimpleStringProperty("");
 	private StringProperty email = new SimpleStringProperty("");
 	private StringProperty endereco = new SimpleStringProperty("");
-	IntegerProperty idProperty() {
+	public IntegerProperty idProperty() {
 		return this.id;
+	}
+	public final int getId() {
+		return this.idProperty().get();
+	}
+	
+	public final void setId(final int id) {
+		this.idProperty().set(id);
 	}
 	public final StringProperty nomeProperty() {
 		return this.nome;
