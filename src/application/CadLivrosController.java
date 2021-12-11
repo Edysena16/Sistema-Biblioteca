@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import model.Livros;
+import model.Livro;
 import util.Conexao;
 public class CadLivrosController {
 	//Todos componentes a serem mapeados na tela
@@ -48,12 +48,12 @@ public class CadLivrosController {
 	
 	@FXML
 	public void add() {
-		addLivros();
+		addLivro();
 	}
 	
-	private void addLivros() {
+	private void addLivro() {
 		//livros = new ArrayList<Livros>();
-		Livros l = lerTela();//Qual livro que ele vai add>> Livros l = lerTela();
+		Livro l = lerTela();//Qual livro que ele vai add>> Livros l = lerTela();
 		String sql = "insert into livro(nome, genero, editora, autor) values (?, ?, ?, ?)";//inserir da tabela sqlite
 		try {
 			Connection con = Conexao.conectaSqlite();//Conectar Conexão
@@ -73,8 +73,8 @@ public class CadLivrosController {
 	}
 	
 
-	private Livros lerTela() {
-		Livros l = new Livros();
+	private Livro lerTela() {
+		Livro l = new Livro();
 		l.setNome(txtNome.getText());//Pega o text desse componente e jogar aqui dentro
 		l.setGenero(txtGenero.getText());
 		l.setEditora(txtEditora.getText());
